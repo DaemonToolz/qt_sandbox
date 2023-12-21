@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/assets/icons">
+        <file>assets/icons/edit.png</file>
+        <file>assets/icons/shopping_cart.png</file>
+    </qresource>
+    <qresource prefix="/assets/svg">
+        <file>assets/svgIcons/edit.svg</file>
+        <file>assets/svgIcons/shopping_cart.svg</file>
+        <file>assets/svgIcons/payments.svg</file>
+    </qresource>
+</RCC>

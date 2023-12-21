@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>i18n/base.ts</file>
+        <file>i18n/qml_en.ts</file>
+        <file>i18n/qml_fr.ts</file>
+    </qresource>
+</RCC>

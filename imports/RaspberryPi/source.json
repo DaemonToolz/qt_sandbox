@@ -1,0 +1,39 @@
+{
+    "book":[
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        },
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        },
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        },
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        },
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        },
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        },
+        {
+            "name": "Name1",
+            "price": 10.5,
+            "currency": "EUR"
+        }
+    ]
+}
