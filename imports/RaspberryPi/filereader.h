@@ -12,7 +12,6 @@ class FileReader : public QObject
 {
     Q_OBJECT
     Q_PROPERTY(QJsonObject data READ data CONSTANT)
-    QML_ELEMENT
 public:
     explicit FileReader(QObject *parent = nullptr);
     QJsonObject read();

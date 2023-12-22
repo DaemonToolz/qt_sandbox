@@ -38,6 +38,8 @@ qt_add_resources(RaspberryPiApp "ImagesResources"
         "assets/svgIcons/edit.svg"
         "assets/svgIcons/payments.svg"
         "assets/svgIcons/shopping_cart.svg"
+        "assets/svgIcons/fr_flag.svg"
+        "assets/svgIcons/en_flag.svg"
 )
 
 set(TS_FILES

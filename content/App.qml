@@ -20,6 +20,7 @@ ApplicationWindow {
     title: "RaspberryPi"
 
     StackLayout {
+        anchors.margins: 5
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
         Screen01 {

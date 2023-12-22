@@ -7,5 +7,7 @@
         <file>assets/svgIcons/edit.svg</file>
         <file>assets/svgIcons/shopping_cart.svg</file>
         <file>assets/svgIcons/payments.svg</file>
+        <file>assets/svgIcons/fr_flag.svg</file>
+        <file>assets/svgIcons/en_flag.svg</file>
     </qresource>
 </RCC>

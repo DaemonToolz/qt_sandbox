@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
     QTranslator translator;
     // On évite le NoDiscard attribute warning
     static_cast<void>(translator.load(":/qt/qml/translated/i18n/base"));
-
+    TranslationEngine::addToTranslation("fr");
+    TranslationEngine::addToTranslation("en");
     app.installTranslator(&translator);
     QQmlApplicationEngine engine;
     const QUrl url(u"qrc:/qt/qml/Main/main.qml"_qs);
@@ -46,7 +47,6 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    TranslationEngine::instance().m_translator = &translator;
     TranslationEngine::instance().m_engine = &engine;
 
     return app.exec();

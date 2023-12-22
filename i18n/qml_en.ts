@@ -2,6 +2,21 @@
 <!DOCTYPE TS>
 <TS version="2.1" language="en-GB" sourcelanguage="fr-FR">
 <context>
+    <name>Languages</name>
+    <message>
+        <source>select_language</source>
+        <translation>Language selection</translation>
+    </message>
+    <message>
+        <source>fr</source>
+        <translation>French</translation>
+    </message>
+    <message>
+        <source>en</source>
+        <translation>English</translation>
+    </message>
+</context>
+<context>
     <name>MainWindow</name>
     <message>
         <source>tabbar.home</source>
