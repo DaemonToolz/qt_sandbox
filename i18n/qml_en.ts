@@ -23,8 +23,8 @@
         <translation>Home</translation>
     </message>
     <message>
-        <source>tabbar.discovery</source>
-        <translation>Discover</translation>
+        <source>tabbar.settings</source>
+        <translation>Settings</translation>
     </message>
     <message>
         <source>tabbar.activity</source>
@@ -33,6 +33,10 @@
 </context>
 <context>
     <name>JsonDataModel</name>
+    <message>
+        <source>btn.load</source>
+        <translation>Load data</translation>
+    </message>
     <message>
         <source>EUR</source>
         <translation>Euro</translation>

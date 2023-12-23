@@ -8,6 +8,7 @@
 #include "import_qml_plugins.h"
 #include "../imports/RaspberryPi/filereader.h"
 #include "../imports/RaspberryPi/translationengine.h"
+#include "../imports//RaspberryPi/httprequesthandler.h"
 #include <QResource>
 #include <QTranslator>
 #include <QQmlContext>
@@ -18,13 +19,17 @@ int main(int argc, char *argv[])
 
     qmlRegisterType<FileReader>("FileReader", 1, 0, "FileReader");
     qmlRegisterType<TranslationEngine>("TranslationEngine", 1, 0, "TranslationEngine");
+    qmlRegisterType<HttpRequestHandler>("HttpRequestHandler", 1, 0, "HttpRequestHandler");
+    qmlRegisterType<StationCity>("StationCity", 1, 0, "StationCity");
+
+
 
     QGuiApplication app(argc, argv);
 
     QTranslator translator;
     // On évite le NoDiscard attribute warning
     static_cast<void>(translator.load(":/qt/qml/translated/i18n/base"));
-    TranslationEngine::addToTranslation("fr");
+    TranslationEngine::addToTranslation("fr", true);
     TranslationEngine::addToTranslation("en");
     app.installTranslator(&translator);
     QQmlApplicationEngine engine;

@@ -21,5 +21,7 @@ qt6_add_qml_module(RaspberryPi
         QML_FILES JsonDataModel.qml
         QML_FILES LanguageButtonModel.qml
         SOURCES translationengine.h translationengine.cpp
+        SOURCES httprequesthandler.h httprequesthandler.cpp
+        SOURCES src/stationcity.h src/stationcity.cpp
 )
 

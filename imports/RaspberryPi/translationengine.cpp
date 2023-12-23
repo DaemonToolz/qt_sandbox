@@ -6,7 +6,6 @@
 TranslationEngine::TranslationEngine(QObject *parent)
     : QObject{parent}
 {
-
 }
 
 QStringList TranslationEngine::getAllLanguages(){
@@ -17,17 +16,21 @@ QStringList TranslationEngine::getAllLanguages(){
     return qListStr;
 }
 
-void TranslationEngine::addToTranslation(const QString& language){
+
+void TranslationEngine::addToTranslation(const QString& language, bool defaultLang){
     QTranslator translator;
     QString path = ":/qt/qml/translated/i18n/qml_"+language;
     bool added = translator.load(path);
     if(added){
-        addToTranslation(language, path);
+        addToTranslation(language, path, defaultLang);
     }
 }
 
-void TranslationEngine::addToTranslation(const QString& language, const QString& path){
+void TranslationEngine::addToTranslation(const QString& language, const QString& path, bool defaultLang){
     instance().m_translatorMap[language.toStdString()] = path.toStdString();
+    if(defaultLang){
+        instance().m_currLanguage = language;
+    }
 }
 
 

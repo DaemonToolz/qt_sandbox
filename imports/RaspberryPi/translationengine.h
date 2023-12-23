@@ -16,8 +16,8 @@ protected:
 public:
 
     static TranslationEngine &instance() { static TranslationEngine object; return object; }
-    static void addToTranslation(const QString& language, const QString& path);
-    static void addToTranslation(const QString& language);
+    static void addToTranslation(const QString& language, const QString& path, bool defaultLang = false);
+    static void addToTranslation(const QString& language, bool defaultLang = false);
 
     QQmlApplicationEngine* m_engine;
 

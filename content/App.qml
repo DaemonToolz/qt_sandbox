@@ -23,16 +23,8 @@ ApplicationWindow {
         anchors.margins: 5
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
-        Screen01 {
-            id: firstScreen
-        }
-
-        Screen02 {
-            id: discoverTab
-        }
-        Item {
-            id: activityTab
-        }
+        Screen01 {}
+        Screen02 {}
     }
 
 
@@ -45,12 +37,8 @@ ApplicationWindow {
             text: qsTranslate("MainWindow","tabbar.home")
         }
         TabButton {
-            text: qsTranslate("MainWindow","tabbar.discovery")
+            text: qsTranslate("MainWindow","tabbar.settings")
         }
-        TabButton {
-            text: qsTranslate("MainWindow","tabbar.activity")
-        }
-
         position: TabBar.Footer
         activeFocusOnTab: true
         anchors.horizontalCenter: parent.horizontalCenter
