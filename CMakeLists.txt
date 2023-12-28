@@ -7,7 +7,7 @@ project(RaspberryPiApp LANGUAGES CXX)
 set (CMAKE_CXX_STANDARD 20)
 set(CMAKE_AUTOMOC ON)
 
-find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick LinguistTools QuickControls2 )
+find_package(Qt6 6.2 REQUIRED COMPONENTS Core Gui Qml Quick LinguistTools QuickControls2 Concurrent)
 
 if (Qt6_VERSION VERSION_GREATER_EQUAL 6.3)
     qt_standard_project_setup()
@@ -55,6 +55,7 @@ target_link_libraries(RaspberryPiApp PRIVATE
     Qt6::Quick
     Qt6::QuickControls2
     Qt6::Network
+    Qt6::Concurrent
 )
 
 if (BUILD_QDS_COMPONENTS)

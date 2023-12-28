@@ -1,12 +1,13 @@
 #include "stationcity.h"
+#include <QJsonObject>
 
 StationCity::StationCity() {}
 StationCity::StationCity(const QString& iataStationCode,
-            const QString& name,
-            const QString& cityName,
-            const QString& category,
-            const QString& iso2CountryCode,
-            const QString& regionCode){
+                         const QString& name,
+                         const QString& cityName,
+                         const QString& category,
+                         const QString& iso2CountryCode,
+                         const QString& regionCode){
     this->m_iataStationCode = iataStationCode;
     this->m_name = name;
     this->m_cityName = cityName;
@@ -28,4 +29,15 @@ StationCity::~StationCity(){}
 
 StationCity StationCity::operator=(const StationCity& ref){
     return StationCity(ref);
+}
+
+QJsonObject StationCity::toJson() const{
+    return {
+        {"iataStationCode", m_iataStationCode},
+        {"name", m_name},
+        {"cityName", m_cityName},
+        {"category", m_category},
+        {"iso2CountryCode", m_iso2CountryCode},
+        {"regionCode", m_regionCode}
+    };
 }

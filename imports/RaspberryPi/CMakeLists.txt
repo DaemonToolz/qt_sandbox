@@ -23,5 +23,6 @@ qt6_add_qml_module(RaspberryPi
         SOURCES translationengine.h translationengine.cpp
         SOURCES httprequesthandler.h httprequesthandler.cpp
         SOURCES src/stationcity.h src/stationcity.cpp
+        SOURCES airlinerequestfilter.h airlinerequestfilter.cpp
 )
 

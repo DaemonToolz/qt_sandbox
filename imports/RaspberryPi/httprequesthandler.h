@@ -4,7 +4,8 @@
 #include "qnetworkaccessmanager.h"
 #include "qqmlengine.h"
 #include <QObject>
-#include "src/stationcity.h"
+#include <QJsonArray>
+#include <QNetworkReply>
 class HttpRequestHandler : public QObject
 {
     Q_OBJECT
@@ -13,11 +14,11 @@ public:
     Q_INVOKABLE void get();
 
 signals:
-    void dataLoaded(const QList<StationCity>& result);
-
+    void dataLoaded(const QJsonArray& result, const QStringList& regions, const QStringList& countries);
+    void dataLoadingFailed(const int& responseCode);
 public slots:
     void requestReply(QNetworkReply *reply);
-
+    void requestNetworkError(QNetworkReply::NetworkError* error);
 private:
     QNetworkAccessManager* m_networkAccessManager;
 };

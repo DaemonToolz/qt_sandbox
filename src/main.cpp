@@ -6,9 +6,10 @@
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
-#include "../imports/RaspberryPi/filereader.h"
-#include "../imports/RaspberryPi/translationengine.h"
-#include "../imports//RaspberryPi/httprequesthandler.h"
+#include "imports/RaspberryPi/filereader.h"
+#include "imports/RaspberryPi/translationengine.h"
+#include "imports//RaspberryPi/httprequesthandler.h"
+#include "imports/RaspberryPi/airlinerequestfilter.h"
 #include <QResource>
 #include <QTranslator>
 #include <QQmlContext>
@@ -20,9 +21,7 @@ int main(int argc, char *argv[])
     qmlRegisterType<FileReader>("FileReader", 1, 0, "FileReader");
     qmlRegisterType<TranslationEngine>("TranslationEngine", 1, 0, "TranslationEngine");
     qmlRegisterType<HttpRequestHandler>("HttpRequestHandler", 1, 0, "HttpRequestHandler");
-    qmlRegisterType<StationCity>("StationCity", 1, 0, "StationCity");
-
-
+    qmlRegisterType<AirlineRequestFilter>("AirlineRequestFilter", 1, 0, "AirlineRequestFilter");
 
     QGuiApplication app(argc, argv);
 

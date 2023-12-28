@@ -1,7 +1,7 @@
 #ifndef STATIONCITY_H
 #define STATIONCITY_H
 #include <QString>
-#include <QVariant>
+#include <QJsonObject>
 class StationCity{
     Q_GADGET
 public:
@@ -18,6 +18,7 @@ public:
     QString iso2CountryCode() const {return m_iso2CountryCode;};
     QString regionCode() const {return m_regionCode;};
     QString category() const {return m_category;};
+
     explicit StationCity();
     StationCity(const QString& iataStationCode,
                 const QString& name,
@@ -30,6 +31,8 @@ public:
     ~StationCity();
 
     StationCity operator=(const StationCity& ref);
+
+    QJsonObject toJson() const;
 
 private:
     QString m_iataStationCode;
