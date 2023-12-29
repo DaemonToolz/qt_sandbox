@@ -219,4 +219,32 @@
         <translation>Change the language</translation>
     </message>
 </context>
+<context>
+    <name>Region</name>
+    <message>
+        <source>EU</source>
+        <translation>Europe</translation>
+    </message>
+    <message>
+        <source>AF</source>
+        <translation>Africa</translation>
+    </message>
+    <message>
+        <source>NA</source>
+        <translation>North America</translation>
+    </message>
+    <message>
+        <source>OC</source>
+        <translation>Oceania</translation>
+    </message>
+    <message>
+        <source>AS</source>
+        <translation>Asia</translation>
+    </message>
+    <message>
+        <source>SA</source>
+        <translation>South America</translation>
+    </message>
+</context>
+
 </TS>

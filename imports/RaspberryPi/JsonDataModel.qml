@@ -19,14 +19,14 @@ Item {
                                        selectorBoxModel.clear();
 
                                        for(let i = 0; i < data.length; ++i){
-                                            selectorBoxModel.append({value:data[i].iataStationCode})
+                                           selectorBoxModel.append({value:data[i].iataStationCode})
                                        }
                                    }
         onSelectedRegionUpdated:  (data) => {
                                       selectorBoxModel.clear();
 
                                       for(let i = 0; i < data.length; ++i){
-                                           selectorBoxModel.append({value:data[i].iso2CountryCode})
+                                          selectorBoxModel.append({value:data[i].iso2CountryCode})
                                       }
                                   }
     }
@@ -34,7 +34,7 @@ Item {
     HttpRequestHandler{
         id: requestHandler
         onDataLoaded: (result, regions, countries) => {
-                          stringSelector.target = "region"
+                          stringSelector.target = "Region"
                           filterRequest.setAllStations(result);
                           selectorBoxModel.clear();
                           console.log(regions)
@@ -99,37 +99,39 @@ Item {
             Item {
                 width: stringSelector.cellWidth;
                 height: stringSelector.cellHeight
-                Column {
+                Rectangle {
                     anchors.fill: parent
                     anchors.margins: 5
-                    spacing: 5
+                    radius: 5
+                    color: "#F0F0F0"
+
                     Label {
                         horizontalAlignment: "AlignHCenter"
+                        verticalAlignment: "AlignVCenter"
                         width:parent.width
-                        text: qsTranslate("Languages", value)
+                        height:parent.height
+                        text: qsTranslate(stringSelector.target, value)
                     }
                 }
+
             }
         }
 
         GridView{
-            cellWidth: 128
-            cellHeight : 96
+            cellWidth: 196
+            cellHeight : 196
             id: stringSelector
             Layout.fillWidth: true
             Layout.fillHeight: true
-
-            focus: true
-            highlightFollowsCurrentItem: true
+            verticalLayoutDirection: Grid.TopToBottom
+            layoutDirection: Qt.LeftToRight
+            flow: Grid.TopToBottom
+            flickableDirection: Flickable.HorizontalFlick
             keyNavigationWraps: false
             smooth: true
 
-            property string target : "region";
-            highlight: Rectangle {
-                opacity: 0.25
-                color: "teal";
-                radius: 5
-            }
+            property string target : "Region";
+
             model: ListModel{
                 id: selectorBoxModel
             }
@@ -148,13 +150,13 @@ Item {
                                stringSelector.currentIndex = index
 
                                switch(stringSelector.target){
-                                   case "region":
-                                   stringSelector.target = "country"
+                                   case "Region":
+                                   stringSelector.target = "Country"
                                    filterRequest.selectedRegion = selectorBoxModel.get(index).value;
 
                                    break;
-                                   case "country":
-                                   stringSelector.target = "airport";
+                                   case "Country":
+                                   stringSelector.target = "Airport";
 
                                    filterRequest.selectedCountry = selectorBoxModel.get(index).value;
                                    break;
@@ -166,9 +168,10 @@ Item {
             }
             delegate: itemSelectorDelegate
             add: Transition {
-                NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 500 }
-                NumberAnimation { property: "scale"; easing.type: Easing.OutBounce; from: 0; to: 1.0; duration: 750 }
+                NumberAnimation { property: "opacity"; from: 0; to: 1.0; duration: 750 }
             }
+
+
         }
 
     }
