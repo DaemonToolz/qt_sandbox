@@ -16,13 +16,13 @@ qt6_add_qml_module(RaspberryPi
         DirectoryFontLoader.qml
         EventListModel.qml
         EventListSimulator.qml
-        SOURCES filereader.h filereader.cpp
-        SOURCES
+        SOURCES src/filereader.h src/filereader.cpp
         QML_FILES JsonDataModel.qml
         QML_FILES LanguageButtonModel.qml
-        SOURCES translationengine.h translationengine.cpp
-        SOURCES httprequesthandler.h httprequesthandler.cpp
+        SOURCES src/translationengine.h src/translationengine.cpp
+        SOURCES src/httprequesthandler.h src/httprequesthandler.cpp
         SOURCES src/stationcity.h src/stationcity.cpp
-        SOURCES airlinerequestfilter.h airlinerequestfilter.cpp
+        SOURCES src/airlinerequestfilter.h src/airlinerequestfilter.cpp
+        QML_FILES AirportGlobalSelection.qml
 )
 

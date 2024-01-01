@@ -77,5 +77,10 @@ void AirlineRequestFilter::setSelectedCountry(const QString& country) {
 QString AirlineRequestFilter::getSelectedAirport() const { return m_selectedCountry; }
 void AirlineRequestFilter::setSelectedAirport(const QString& airport) {
     m_selectedAirport = airport;
-    //emit selectedAirportUpdated(*data);
+    if(auto findIfIt = std::find_if(m_stations.begin(),m_stations.end(), [=](const StationCity& e) {
+            return e.iataStationCode() == airport;
+        });findIfIt != m_stations.end()){
+        emit selectedAirportUpdated(findIfIt->toJson());
+    }
+
 }

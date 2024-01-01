@@ -17,5 +17,6 @@ Rectangle {
     height: Constants.height
 
     color: Constants.backgroundColor
-    JsonDataModel{}
+    AirportGlobalSelection{}
 }
+

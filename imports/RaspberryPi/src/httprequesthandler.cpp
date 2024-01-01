@@ -12,7 +12,7 @@
 #include <QVariant>
 #include <QFuture>
 #include <QtConcurrent/QtConcurrent>
-#include "src/stationcity.h"
+#include "stationcity.h"
 #include <exception>
 
 HttpRequestHandler::HttpRequestHandler(QObject *parent)

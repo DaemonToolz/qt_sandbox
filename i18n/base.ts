@@ -204,6 +204,14 @@
 <context>
     <name>JsonDataModel</name>
     <message>
+        <source>btn.departure</source>
+        <translation>Départs</translation>
+    </message>
+    <message>
+        <source>btn.arrival</source>
+        <translation>Arrivées</translation>
+    </message>
+    <message>
         <source>btn.load</source>
         <translation>Charger</translation>
     </message>

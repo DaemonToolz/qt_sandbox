@@ -7,25 +7,36 @@ import AirlineRequestFilter;
 import QtQuick.Controls.Material 6.2
 
 Item {
+    id: rootItem
     anchors.fill: parent
-
+    signal airportSelected(var airport);
+    function reset(){
+        selectorBoxModel.clear();
+    }
 
     AirlineRequestFilter{
         id: filterRequest
+        property var currentSet:[];
+        property var originalData;
         onSelectedAirportChanged: (data) => {
-
+                                      console.log(data)
+                                      rootItem.airportSelected(data.iataStationCode);
                                   }
         onSelectedCountryUpdated:  (data) => {
+                                       originalData = data;
                                        selectorBoxModel.clear();
-
+                                       currentSet.clear();
                                        for(let i = 0; i < data.length; ++i){
+                                           currentSet.append({value:data[i].iataStationCode})
                                            selectorBoxModel.append({value:data[i].iataStationCode})
                                        }
                                    }
         onSelectedRegionUpdated:  (data) => {
+                                      originalData = data;
                                       selectorBoxModel.clear();
-
+                                      currentSet.clear();
                                       for(let i = 0; i < data.length; ++i){
+                                          currentSet.append({value:data[i].iso2CountryCode})
                                           selectorBoxModel.append({value:data[i].iso2CountryCode})
                                       }
                                   }
@@ -33,16 +44,14 @@ Item {
 
     HttpRequestHandler{
         id: requestHandler
+        property bool loaded: false
+        property var storedRegions;
         onDataLoaded: (result, regions, countries) => {
-                          stringSelector.target = "Region"
                           filterRequest.setAllStations(result);
-                          selectorBoxModel.clear();
-                          console.log(regions)
-                          for(let i = 0; i < regions.length; ++i){
-                              selectorBoxModel.append({value:regions[i]})
-                          }
-
+                          this.storedRegions = regions;
+                          displayRegions()
                           bIndicator.visible = false
+                          this.loaded = true;
                       }
 
 
@@ -52,6 +61,14 @@ Item {
                                  errorCodePopupContent.text = qsTranslate("ErrorCodes", "http.code.%1".arg(responseCode))
                              }
 
+
+        function displayRegions(){
+            stringSelector.target = "Region"
+            selectorBoxModel.clear();
+            for(let i = 0; i < storedRegions.length; ++i){
+                selectorBoxModel.append({value:storedRegions[i]})
+            }
+        }
     }
 
 
@@ -74,31 +91,12 @@ Item {
         anchors.fill: parent
         spacing: 2
 
-        Button{
-            id: searchBtn
-            Layout.fillWidth: true
-            width: parent.fillWidth
-            height: 64
-            text: qsTranslate("JsonDataModel", "btn.load")
-            onClicked: {
-                bIndicator.visible = true
-                requestHandler.get()
-            }
-        }
-
-        BusyIndicator{
-            id: bIndicator
-            visible: false
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-        }
-
-
         Component {
             id: itemSelectorDelegate
             Item {
                 width: stringSelector.cellWidth;
                 height: stringSelector.cellHeight
+
                 Rectangle {
                     anchors.fill: parent
                     anchors.margins: 5
@@ -123,10 +121,6 @@ Item {
             id: stringSelector
             Layout.fillWidth: true
             Layout.fillHeight: true
-            verticalLayoutDirection: Grid.TopToBottom
-            layoutDirection: Qt.LeftToRight
-            flow: Grid.TopToBottom
-            flickableDirection: Flickable.HorizontalFlick
             keyNavigationWraps: false
             smooth: true
 
@@ -157,7 +151,6 @@ Item {
                                    break;
                                    case "Country":
                                    stringSelector.target = "Airport";
-
                                    filterRequest.selectedCountry = selectorBoxModel.get(index).value;
                                    break;
                                    default:
@@ -174,8 +167,53 @@ Item {
 
         }
 
+
+        TextField{
+            Layout.fillWidth: true
+            height: 64
+            placeholderText: "Filter results"
+
+            onTextChanged: {
+                console.log(filterRequest.currentSet)
+                if(this.text === ""){
+                    console.log(filterRequest.currentSet)
+                    for(let i = 0; i < filterRequest.currentSet.count; ++i){
+                        selectorBoxModel.append({value:filterRequest.currentSet[i].value})
+                    }
+                } else {
+                    const searchText = this.text
+                    console.log(searchText)
+                    let filtered = filterRequest.currentSet.filter(item => item.value.indexOf(searchText) > -1);
+
+                    console.log(filtered)
+                    selectorBoxModel.clear()
+                    for(let i = 0; i < filtered; ++i){
+                        selectorBoxModel.append({value:filtered[i].value})
+                    }
+                }
+            }
+        }
+
+        BusyIndicator{
+            id: bIndicator
+            visible: false
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+        }
+
+
     }
 
+    onVisibleChanged: {
+        if(requestHandler.loaded){
+            requestHandler.displayRegions();
+        }
+    }
+
+    Component.onCompleted: {
+        bIndicator.visible = true
+        requestHandler.get()
+    }
 
     /*
 

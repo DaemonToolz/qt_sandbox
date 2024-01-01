@@ -6,10 +6,10 @@
 #include "app_environment.h"
 #include "import_qml_components_plugins.h"
 #include "import_qml_plugins.h"
-#include "imports/RaspberryPi/filereader.h"
-#include "imports/RaspberryPi/translationengine.h"
-#include "imports//RaspberryPi/httprequesthandler.h"
-#include "imports/RaspberryPi/airlinerequestfilter.h"
+#include "imports/RaspberryPi/src/filereader.h"
+#include "imports/RaspberryPi/src/translationengine.h"
+#include "imports//RaspberryPi/src/httprequesthandler.h"
+#include "imports/RaspberryPi/src/airlinerequestfilter.h"
 #include <QResource>
 #include <QTranslator>
 #include <QQmlContext>

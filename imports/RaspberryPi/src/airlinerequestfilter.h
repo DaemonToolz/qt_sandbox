@@ -2,7 +2,7 @@
 #define AIRLINEREQUESTFILTER_H
 
 #include <QStringList>
-#include "src/stationcity.h"
+#include "stationcity.h"
 #include <QObject>
 #include <QJsonArray>
 
@@ -26,7 +26,7 @@ public:
 signals:
     void selectedRegionUpdated (const QJsonArray& region);
     void selectedCountryUpdated(const QJsonArray& country);
-    void selectedAirportUpdated(const QJsonArray& airport);
+    void selectedAirportUpdated(const QJsonValue& airport);
 
 private:
     QList<StationCity> m_stations;
